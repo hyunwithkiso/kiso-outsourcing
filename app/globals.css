@@ -1,15 +1,19 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
+
 @import "tailwindcss";
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --transition-ease: cubic-bezier(0.65, 0, 0.35, 1);
+  --transition-bounce: cubic-bezier(0.5, -0.5, 0.1, 1.5);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-geist-sans);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,8 +23,262 @@
   }
 }
 
+* {
+  font-family: "Pretendard", sans-serif;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* 애니메이션 효과 - 개선 버전 */
+.animate-in {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* 스크롤 기반 애니메이션 */
+.fade-in-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s var(--transition-ease),
+    transform 0.8s var(--transition-ease);
+}
+
+.fade-in-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 슬라이드 인 애니메이션 */
+.slide-in-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.8s var(--transition-ease),
+    transform 0.8s var(--transition-ease);
+}
+
+.slide-in-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.slide-in-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.8s var(--transition-ease),
+    transform 0.8s var(--transition-ease);
+}
+
+.slide-in-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* 텍스트 밑줄 효과 */
+.text-underline-animation {
+  position: relative;
+}
+
+.text-underline-animation:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: currentColor;
+  transform-origin: bottom right;
+  transition: transform 0.4s var(--transition-ease);
+}
+
+.text-underline-animation:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* 호버 효과 개선 */
+.hover-lift {
+  transition: transform 0.4s var(--transition-bounce),
+    box-shadow 0.4s var(--transition-ease);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+}
+
+/* 이미지 호버 효과 */
+.img-hover-zoom {
+  overflow: hidden;
+}
+
+.img-hover-zoom img {
+  transition: transform 0.6s var(--transition-ease);
+}
+
+.img-hover-zoom:hover img {
+  transform: scale(1.05);
+}
+
+/* 그리드 아이템 진입 애니메이션 */
+.grid-item-animate {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s var(--transition-ease),
+    transform 0.8s var(--transition-ease);
+}
+
+.grid-item-animate.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 버튼 애니메이션 */
+.button-hover-effect {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s var(--transition-ease);
+}
+
+.button-hover-effect:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: width 0.4s var(--transition-ease);
+  z-index: 0;
+}
+
+.button-hover-effect:hover:before {
+  width: 100%;
+}
+
+/* 딜레이 애니메이션 */
+.animate-fade-in-delay-3 {
+  animation: fadeIn 1s var(--transition-ease) forwards;
+  animation-delay: 0.6s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 스타트업 스타일 UI 요소 */
+.startup-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 9999px;
+  letter-spacing: 0.05em;
+  background-color: rgba(0, 0, 0, 0.05);
+  color: #000;
+}
+
+.startup-badge.dark {
+  background-color: #000;
+  color: #fff;
+}
+
+.startup-card {
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  transition: all 0.4s var(--transition-ease);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.startup-card:hover {
+  box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
+}
+
+/* 포트폴리오 모달 버튼 스타일 수정 */
+.inline-flex {
+  display: inline-flex !important;
+}
+
+/* 색상 대비 개선을 위한 스타일 */
+.text-kiso-dark-gray {
+  color: #666666; /* 더 어두운 회색으로 변경하여 가독성 향상 */
+}
+
+.bg-white button:hover,
+.bg-white a:hover {
+  filter: contrast(110%);
+}
+
+button,
+a.button-style {
+  transition: all 0.4s var(--transition-ease);
+  position: relative;
+  z-index: 1;
+}
+
+button::after,
+a.button-style::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.4s var(--transition-ease);
+  z-index: -1;
+}
+
+button:hover::after,
+a.button-style:hover::after {
+  opacity: 0.1;
+  transform: scale(1);
+}
+
+/* 그라데이션 텍스트 */
+.gradient-text {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(90deg, #000 0%, #666 100%);
+}
+
+/* 섹션 구분선 */
+.section-divider {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.1) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+/* 카드 스타일 */
+.feature-card {
+  border-radius: 0.75rem;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  transition: all 0.4s var(--transition-ease);
+}
+
+.feature-card:hover {
+  border-color: rgba(0, 0, 0, 0.15);
 }
