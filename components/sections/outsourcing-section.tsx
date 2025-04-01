@@ -278,56 +278,6 @@ const OutsourcingSection = () => {
 
         {/* 섹션 구분선 */}
         <div className="section-divider my-16"></div>
-
-        {/* CTA 섹션 */}
-        <div className="max-w-3xl mx-auto">
-          <div
-            className={`bg-white border border-kiso-light-gray rounded-xl p-10 transition-all duration-700 ease-out ${
-              isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-12"
-            }`}
-            style={{ transitionDelay: "500ms" }}
-            ref={(el) => setItemRef(el, processes.length)}
-          >
-            <div className="flex flex-col md:flex-row md:items-center">
-              <div className="md:w-2/3 mb-8 md:mb-0 md:pr-10">
-                <h3 className="mb-4 text-2xl md:text-3xl font-bold font-geist text-kiso-black">
-                  지금 프로젝트를 시작하세요
-                </h3>
-                <p className="text-kiso-dark-gray font-pretendard leading-relaxed">
-                  본질에 집중한 프로젝트로 비즈니스의 가치를 높이세요. 첫
-                  상담부터 프로젝트 완료까지 전문적인 팀이 함께합니다.
-                </p>
-              </div>
-              <div className="md:w-1/3 flex justify-center md:justify-end">
-                <Link
-                  href="#contact"
-                  className="button-hover-effect inline-flex items-center px-8 py-4 text-base font-medium bg-kiso-black border border-kiso-black rounded-md hover:bg-kiso-black/90 transition-all duration-300 font-pretendard group"
-                  aria-label="프로젝트 문의하기"
-                >
-                  <span className="relative z-10 flex items-center">
-                    문의하기
-                    <svg
-                      className="w-5 h-5 ml-2 transform transition-transform duration-300 group-hover:translate-x-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M14 5l7 7m0 0l-7 7m7-7H3"
-                      ></path>
-                    </svg>
-                  </span>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );

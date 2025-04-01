@@ -30,43 +30,23 @@ const philosophyItems = [
 const PhilosophySection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
-  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true);
-            entry.target.classList.add("visible");
-          }
-        });
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
       },
-      { threshold: 0.15 }
+      { threshold: 0.1 }
     );
 
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
     }
 
-    itemRefs.current.forEach((item) => {
-      if (item) observer.observe(item);
-    });
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-
-      itemRefs.current.forEach((item) => {
-        if (item) observer.unobserve(item);
-      });
-    };
+    return () => observer.disconnect();
   }, []);
-
-  const setItemRef = (el: HTMLDivElement | null, index: number) => {
-    itemRefs.current[index] = el;
-  };
 
   return (
     <section
@@ -83,7 +63,11 @@ const PhilosophySection = () => {
 
       <div className="container relative px-6 mx-auto max-w-7xl">
         {/* 섹션 제목 */}
-        <div className="max-w-3xl mx-auto mb-24 text-center">
+        <div
+          className={`max-w-3xl mx-auto mb-24 text-center transition-all duration-1000 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
           <div className="inline-flex items-center px-4 py-2 mb-8 space-x-2 text-xs font-medium bg-gray-900 text-white rounded-full font-geistMono">
             <span className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span>
             <span>PHILOSOPHY</span>
@@ -102,12 +86,13 @@ const PhilosophySection = () => {
           {philosophyItems.map((item, idx) => (
             <div
               key={item.number}
-              className="group relative bg-white rounded-2xl p-8 md:p-10 transition-all duration-500"
-              ref={(el) => setItemRef(el, idx)}
+              className={`group relative bg-white rounded-2xl p-8 md:p-10 transition-all duration-1000 ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-12"
+              }`}
               style={{
-                opacity: 0,
-                transform: "translateY(20px)",
-                transitionDelay: `${idx * 100}ms`,
+                transitionDelay: `${idx * 200}ms`,
               }}
             >
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-gray-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -133,12 +118,11 @@ const PhilosophySection = () => {
 
         {/* 철학 인용구 */}
         <div
-          className="max-w-4xl mx-auto text-center"
-          ref={(el) => setItemRef(el, 3)}
+          className={`max-w-4xl mx-auto text-center transition-all duration-1000 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+          }`}
           style={{
-            opacity: 0,
-            transform: "translateY(20px)",
-            transitionDelay: "300ms",
+            transitionDelay: "600ms",
           }}
         >
           <blockquote className="mb-16">
