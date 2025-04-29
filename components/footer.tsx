@@ -3,17 +3,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import logo from "@/assets/logo.png";
-import { Mail, MapPin, Clock, Instagram, Twitter, Github } from "lucide-react";
+import { Mail, Clock, Instagram, Github } from "lucide-react";
 
 const socialLinks = [
   {
     name: "Instagram",
-    href: "#",
+    href: "https://www.instagram.com/kiso_dev",
     icon: <Instagram className="w-5 h-5" />,
   },
   {
     name: "GitHub",
-    href: "https://github.com/hyunwithkiso",
+    href: "https://github.com/kiso-official",
     icon: <Github className="w-5 h-5" />,
   },
 ];
@@ -23,7 +23,7 @@ const footerLinks = [
   { name: "서비스", href: "#principles" },
   { name: "프로세스", href: "#outsourcing" },
   { name: "포트폴리오", href: "#portfolio" },
-  { name: "문의", href: "#contact" },
+  { name: "문의", href: "https://open.kakao.com/o/snCUhGth" },
 ];
 
 const Footer = () => {
@@ -85,16 +85,16 @@ const Footer = () => {
             <ul className="space-y-4 text-kiso-dark-gray font-pretendard">
               <li className="flex items-start">
                 <Mail className="w-5 h-5 mr-3 text-kiso-dark-gray mt-0.5 flex-shrink-0" />
-                <a
-                  href="mailto:contact@kiso.design"
+                <Link
+                  href="mailto:kiso.official.9547@gmail.com"
                   className="hover:text-kiso-black transition-colors duration-300 inline-block"
                 >
-                  work@kiso.dev
-                </a>
+                  kiso.official.9547@gmail.com
+                </Link>
               </li>
               <li className="flex items-start">
                 <Clock className="w-5 h-5 mr-3 text-kiso-dark-gray mt-0.5 flex-shrink-0" />
-                <span>월-토: 11:00 - 21:00</span>
+                <span>24시간 상담 가능</span>
               </li>
             </ul>
           </div>

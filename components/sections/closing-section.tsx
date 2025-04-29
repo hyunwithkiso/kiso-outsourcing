@@ -147,7 +147,7 @@ const ClosingSection = () => {
             {/* CTA 버튼 */}
             <div className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
               <Link
-                href="#contact"
+                href="https://open.kakao.com/o/snCUhGth"
                 className="group inline-flex items-center justify-center px-8 py-4 text-base font-medium transition-all duration-300 bg-white rounded-lg text-gray-900 hover:bg-white/90 transform hover:-translate-y-1"
               >
                 문의하기

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 const portfolioItems = [
@@ -171,12 +172,12 @@ const PortfolioSection = () => {
                   결과물을 만들어보세요.
                 </p>
                 <div className="pt-4">
-                  <a
-                    href="#closing"
+                  <Link
+                    href="https://open.kakao.com/o/snCUhGth"
                     className="inline-flex items-center px-8 py-4 text-sm font-medium text-gray-900 bg-white rounded-full hover:bg-white/90 transition-colors font-geistMono tracking-tight"
                   >
                     프로젝트 문의하기
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
