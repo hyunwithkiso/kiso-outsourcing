@@ -3,6 +3,7 @@ import Footer from "@/components/footer";
 import HeroSection from "@/components/sections/hero-section";
 import PhilosophySection from "@/components/sections/philosophy-section";
 import OutsourcingSection from "@/components/sections/outsourcing-section";
+import ImageGallery from "@/components/image-gallery";
 import PortfolioSection from "@/components/sections/portfolio-section";
 import ClosingSection from "@/components/sections/closing-section";
 import SectionWrapper from "@/components/section-wrapper";
@@ -21,6 +22,9 @@ export default function Home() {
         <OutsourcingSection />
       </SectionWrapper>
       <SectionWrapper delay={0.3}>
+        <ImageGallery />
+      </SectionWrapper>
+      <SectionWrapper delay={0.35}>
         <PortfolioSection />
       </SectionWrapper>
       <SectionWrapper delay={0.3}>
